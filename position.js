@@ -10,4 +10,10 @@ function getPosition() {
     return position;
 }
 
-export { setPosition, getPosition };
+// Export for Node.js and set on window for browser
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { setPosition, getPosition };
+} else {
+    window.setPosition = setPosition;
+    window.getPosition = getPosition;
+}
