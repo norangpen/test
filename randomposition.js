@@ -9,8 +9,12 @@ function getRandomPosition() {
 
 function updatePosition() {
     const newPosition = getRandomPosition();
-    window.setPosition(newPosition);  // This should now be available
-    console.log(`New Position Set: ${newPosition}`);
+    if (window.setPosition) {
+        window.setPosition(newPosition);  // This should now be available
+        console.log(`New Position Set: ${newPosition}`);
+    } else {
+        console.error("setPosition is not defined on window");
+    }
 }
 
 window.setInterval(updatePosition, 3000);
