@@ -10,6 +10,8 @@ let animationMixers = [];
 let lastPosition = null;
 
 function init() {
+    console.log('Initializing scene...');
+    
     scene = new THREE.Scene();
     clock = new THREE.Clock();
 
@@ -43,6 +45,8 @@ function init() {
 }
 
 function createGradientBackground() {
+    console.log('Creating gradient background...');
+    
     const vertexShader = `
         varying vec2 vUv;
         void main() {
@@ -73,6 +77,8 @@ function createGradientBackground() {
 }
 
 function createGround() {
+    console.log('Creating ground...');
+    
     const textureLoader = new THREE.TextureLoader();
     const groundTexture = textureLoader.load('https://threejs.org/examples/textures/grid.png');
     groundTexture.wrapS = groundTexture.wrapT = THREE.RepeatWrapping;
@@ -88,6 +94,8 @@ function createGround() {
 }
 
 function loadStaticModel() {
+    console.log('Loading static model...');
+    
     const loader = new GLTFLoader();
     loader.load('models/StaticModel.gltf', (gltf) => {
         staticModel = gltf.scene;
@@ -102,6 +110,8 @@ function loadAnimationModels() {
     const loader = new GLTFLoader();
 
     animationFiles.forEach((file, index) => {
+        console.log(`Loading animation model from ${file}...`);
+        
         loader.load(file, (gltf) => {
             const animationModel = gltf.scene;
             animationModel.visible = false;
@@ -121,6 +131,8 @@ function loadAnimationModels() {
 }
 
 function showModel(model) {
+    console.log('Showing model:', model);
+    
     if (staticModel) staticModel.visible = (model === staticModel);
     animationModels.forEach(animModel => {
         animModel.visible = (animModel === model);
@@ -129,6 +141,8 @@ function showModel(model) {
 
 function updateModelsBasedOnPosition() {
     const position = getPosition();
+    console.log('Retrieved Position:', position); // Debug statement
+    
     if (position !== lastPosition) {
         lastPosition = position;
         console.log("Current Position: ", position);
