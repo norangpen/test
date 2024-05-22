@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -25,8 +25,10 @@
         <div id="position">
             현재 델타 로봇의 위치: <span id="coordinates">로딩 중...</span>
         </div>
+        <!-- Ensure position.js is loaded first -->
+        <script src="position.js"></script>
+        <script src="randomPosition.js"></script>
         <script src="script.js"></script>
-        <script src="randomposition.js"></script>
     </div>
     <div class="bottom-section">
         <h1>회사 재고 현황</h1>
@@ -39,10 +41,10 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- 데이터가 여기에 추가됩니다 -->
                 <script src="script2.js"></script>
             </tbody>
         </table>
     </div>
 </body>
 </html>
+
