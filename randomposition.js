@@ -9,7 +9,7 @@ function getRandomPosition() {
 
 function updatePosition() {
     const newPosition = getRandomPosition();
-    window.setPosition(newPosition);
+    window.setPosition(newPosition);  // This should now be available
     console.log(`New Position Set: ${newPosition}`);
 }
 
