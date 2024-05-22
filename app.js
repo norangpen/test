@@ -3,7 +3,7 @@ import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.118/examples/js
 import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.118/examples/jsm/controls/OrbitControls.js';
 
 // Import the position module
-import { getPosition } from './position.js';
+import { getPosition } from './position.js'; // Ensure this is correct
 
 let camera, scene, renderer, clock;
 let staticModel, animationModels = [];
@@ -135,22 +135,22 @@ function updateModelsBasedOnPosition() {
         const positionDisplay = document.getElementById('positionDisplay');
         
         // Update the text content of the positionDisplay div in the desired format
-        positionDisplay.innerText = `ÇöÀç ÁÂÇ¥: ${position}`;
+        positionDisplay.innerText = `í˜„ì¬ ì¢Œí‘œ: ${position}`;
         
         switch (position) {
-            case "¿øÀ§Ä¡":
+            case "ì›ìœ„ì¹˜":
                 showModel(staticModel);
                 break;
-            case "1¹ø ÁÂÇ¥":
+            case "1ë²ˆ ì¢Œí‘œ":
                 showModel(animationModels[0]);
                 break;
-            case "2¹ø ÁÂÇ¥":
+            case "2ë²ˆ ì¢Œí‘œ":
                 showModel(animationModels[1]);
                 break;
-            case "3¹ø ÁÂÇ¥":
+            case "3ë²ˆ ì¢Œí‘œ":
                 showModel(animationModels[2]);
                 break;
-            case "4¹ø ÁÂÇ¥":
+            case "4ë²ˆ ì¢Œí‘œ":
                 showModel(animationModels[3]);
                 break;
             default:
