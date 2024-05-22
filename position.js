@@ -1,21 +1,16 @@
 // position.js
 let position = null;
 
-function setPosition(value) {
+export function setPosition(value) {
     position = value;
 }
 
-function getPosition() {
+export function getPosition() {
     return position;
 }
 
-// Set functions on the window object for browser usage
+// Also set functions on the window object for browser usage
 if (typeof window !== 'undefined') {
     window.setPosition = setPosition;
     window.getPosition = getPosition;
-}
-
-// Also export for Node.js usage
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { setPosition, getPosition };
 }
