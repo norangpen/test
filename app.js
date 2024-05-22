@@ -74,6 +74,6 @@ function updateModel() {
     document.getElementById('positionDisplay').innerText = `현재 좌표: ${position}`;
 }
 
-window.setInterval(updateModel, 3000);  // Check for position updates every 3 seconds
+window.setInterval(updateModel, 1000);  // Check for position updates every 3 seconds
 
 init();
