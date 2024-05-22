@@ -1,8 +1,9 @@
 // app.js
-import * as THREE from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.118/build/three.module.js';
+import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.118/examples/jsm/loaders/GLTFLoader.js';
+import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.118/examples/jsm/controls/OrbitControls.js';
 
-let scene, camera, renderer;
+let scene, camera, renderer, controls;
 let model;
 
 function init() {
@@ -12,7 +13,13 @@ function init() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
-    camera.position.z = 5;
+    controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.25;
+    controls.enableZoom = true;
+
+    camera.position.set(0, 1, 5);
+    controls.update();
 
     loadModel('StaticModel.gltf');  // Load initial model
 
@@ -42,6 +49,7 @@ function animate() {
     if (model) {
         model.rotation.y += 0.01;  // Example animation
     }
+    controls.update();
     renderer.render(scene, camera);
 }
 
@@ -51,22 +59,22 @@ function updateModel() {
 
     switch (position) {
         case "원위치":
-            modelPath = 'models/StaticModel.gltf';
+            modelPath = 'StaticModel.gltf';
             break;
         case "1번 좌표":
-            modelPath = 'models/Animation1.gltf';
+            modelPath = 'Animation1.gltf';
             break;
         case "2번 좌표":
-            modelPath = 'models/Animation2.gltf';
+            modelPath = 'Animation2.gltf';
             break;
         case "3번 좌표":
-            modelPath = 'models/Animation3.gltf';
+            modelPath = 'Animation3.gltf';
             break;
         case "4번 좌표":
-            modelPath = 'models/Animation4.gltf';
+            modelPath = 'Animation4.gltf';
             break;
         default:
-            modelPath = 'models/StaticModel.gltf';
+            modelPath = 'StaticModel.gltf';
             break;
     }
 
@@ -74,6 +82,6 @@ function updateModel() {
     document.getElementById('positionDisplay').innerText = `현재 좌표: ${position}`;
 }
 
-window.setInterval(updateModel, 1000);  // Check for position updates every 3 seconds
+window.setInterval(updateModel, 3000);  // Check for position updates every 3 seconds
 
 init();
