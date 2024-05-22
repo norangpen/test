@@ -10,8 +10,6 @@ let animationMixers = [];
 let lastPosition = null;
 
 function init() {
-    console.log('Initializing scene...');
-    
     scene = new THREE.Scene();
     clock = new THREE.Clock();
 
@@ -45,8 +43,6 @@ function init() {
 }
 
 function createGradientBackground() {
-    console.log('Creating gradient background...');
-    
     const vertexShader = `
         varying vec2 vUv;
         void main() {
@@ -77,8 +73,6 @@ function createGradientBackground() {
 }
 
 function createGround() {
-    console.log('Creating ground...');
-    
     const textureLoader = new THREE.TextureLoader();
     const groundTexture = textureLoader.load('https://threejs.org/examples/textures/grid.png');
     groundTexture.wrapS = groundTexture.wrapT = THREE.RepeatWrapping;
@@ -94,14 +88,11 @@ function createGround() {
 }
 
 function loadStaticModel() {
-    console.log('Loading static model...');
-    
     const loader = new GLTFLoader();
     loader.load('models/StaticModel.gltf', (gltf) => {
         staticModel = gltf.scene;
-        staticModel.visible = true; // Start with the static model visible
+        staticModel.visible = true;
         scene.add(staticModel);
-        console.log('Static model loaded');
     }, undefined, loadModelFailed);
 }
 
@@ -110,8 +101,6 @@ function loadAnimationModels() {
     const loader = new GLTFLoader();
 
     animationFiles.forEach((file, index) => {
-        console.log(`Loading animation model from ${file}...`);
-        
         loader.load(file, (gltf) => {
             const animationModel = gltf.scene;
             animationModel.visible = false;
@@ -121,19 +110,15 @@ function loadAnimationModels() {
             gltf.animations.forEach((anim) => {
                 const action = animationMixer.clipAction(anim);
                 action.play();
-                console.log(`Playing animation: ${anim.name}`); // Debug log
             });
             animationMixers.push(animationMixer);
 
             scene.add(animationModel);
-            console.log(`Animation model ${index + 1} loaded`);
         }, undefined, loadModelFailed);
     });
 }
 
 function showModel(model) {
-    console.log('Showing model:', model);
-    
     if (staticModel) staticModel.visible = (model === staticModel);
     animationModels.forEach(animModel => {
         animModel.visible = (animModel === model);
@@ -142,14 +127,10 @@ function showModel(model) {
 
 function updateModelsBasedOnPosition() {
     const position = getPosition();
-    console.log('Retrieved Position:', position); // Debug statement
     
     if (position !== lastPosition) {
         lastPosition = position;
-        console.log("Current Position: ", position);
         const positionDisplay = document.getElementById('coordinates');
-        
-        // Update the text content of the coordinates span in the desired format
         positionDisplay.innerText = `현재 좌표: ${position}`;
         
         switch (position) {
@@ -181,7 +162,6 @@ function animate() {
     animationMixers.forEach(mixer => mixer.update(delta));
     controls.update();
     renderer.render(scene, camera);
-
     updateModelsBasedOnPosition();
 }
 
