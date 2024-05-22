@@ -121,6 +121,7 @@ function loadAnimationModels() {
             gltf.animations.forEach((anim) => {
                 const action = animationMixer.clipAction(anim);
                 action.play();
+                console.log(`Playing animation: ${anim.name}`); // Debug log
             });
             animationMixers.push(animationMixer);
 
