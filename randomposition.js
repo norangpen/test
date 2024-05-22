@@ -1,6 +1,6 @@
-const { setPosition } = require('./position.js');
+// randomPosition.js
 
-const positions = ["¿øÀ§Ä¡", "1¹ø ÁÂÇ¥", "2¹ø ÁÂÇ¥", "3¹ø ÁÂÇ¥", "4¹ø ÁÂÇ¥"];
+const positions = ["ì›ìœ„ì¹˜", "1ë²ˆ ì¢Œí‘œ", "2ë²ˆ ì¢Œí‘œ", "3ë²ˆ ì¢Œí‘œ", "4ë²ˆ ì¢Œí‘œ"];
 
 function getRandomPosition() {
     const randomIndex = Math.floor(Math.random() * positions.length);
@@ -9,8 +9,8 @@ function getRandomPosition() {
 
 function updatePosition() {
     const newPosition = getRandomPosition();
-    setPosition(newPosition);
+    window.setPosition(newPosition);
     console.log(`New Position Set: ${newPosition}`);
 }
 
-setInterval(updatePosition, 3000);
+window.setInterval(updatePosition, 3000);
