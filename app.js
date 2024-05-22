@@ -1,7 +1,7 @@
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.118/build/three.module.js';
 import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.118/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.118/examples/jsm/controls/OrbitControls.js';
-import { getPosition } from './position.js'; // Ensure this is correct
+import { getPosition } from './position.js';
 
 let camera, scene, renderer, clock;
 let staticModel, animationModels = [];
@@ -93,6 +93,7 @@ function loadStaticModel() {
         staticModel = gltf.scene;
         staticModel.visible = true; // Start with the static model visible
         scene.add(staticModel);
+        console.log('Static model loaded');
     }, undefined, loadModelFailed);
 }
 
@@ -114,6 +115,7 @@ function loadAnimationModels() {
             animationMixers.push(animationMixer);
 
             scene.add(animationModel);
+            console.log(`Animation model ${index + 1} loaded`);
         }, undefined, loadModelFailed);
     });
 }
