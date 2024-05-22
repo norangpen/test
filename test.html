@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>델타로봇 현재 좌표</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .top-section {
+            flex: 1;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        .left-content {
+            flex: 1;
+            padding-right: 20px;
+        }
+        .right-content {
+            flex: 1;
+            padding-left: 20px;
+            border-left: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+        }
+        .bottom-section {
+            flex: 1;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .coordinate-container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .coordinate-label {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        .coordinate-value {
+            font-size: 20px;
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+        /* 네이게이션 바 스타일 */
+        nav {
+            background-color: #333;
+            padding: 15px 0;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        nav ul li a:hover {
+            background-color: #555;
+        }
+        /* 테이블 스타일 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        /* 델타로봇 사진 스타일 */
+        .robot-image {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#">홈</a></li>
+            <li><a href="#">서비스</a></li>
+            <li><a href="#">프로젝트</a></li>
+            <li><a href="#">회사 소개</a></li>
+            <li><a href="#">연락처</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <!-- 델타 로봇 사진과 현재 위치 -->
+        <div id="robot-image">
+            <iframe src="https://deltarobotgltf3.netlify.app/" width="1350" height="500" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+        </div>
+        <div id="position">
+            현재 델타 로봇의 위치: <span id="coordinates">로딩 중...</span>
+        </div>
+    </div>
+
+    <!-- 자바스크립트를 통해 실시간으로 위치를 업데이트 -->
+    <script>
+        // 실제로는 이 부분에 델타 로봇의 위치를 가져오는 코드를 작성해야 합니다.
+        // 여기서는 임의의 좌표값을 사용하도록 하겠습니다.
+        function getRobotPosition() {
+            // 임의의 좌표값 생성 (예: x, y, z)
+            var x = Math.random() * 100;
+            var y = Math.random() * 100;
+            var z = Math.random() * 100;
+            
+            return { x: x.toFixed(2), y: y.toFixed(2), z: z.toFixed(2) };
+        }
+
+        // 델타 로봇의 위치 업데이트 함수
+        function updateRobotPosition() {
+            var position = getRobotPosition();
+            var positionElement = document.getElementById('coordinates');
+            positionElement.textContent = `x: ${position.x}, y: ${position.y}, z: ${position.z}`;
+        }
+
+        // 일정 시간 간격으로 위치 업데이트
+        setInterval(updateRobotPosition, 3000); // 3초마다 업데이트
+    </script>
+</div>
+        <div class="bottom-section">
+            <h1>회사 재고 현황</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>부품코드</th>
+                        <th>품목</th>
+                        <th>수량</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>D300-12345</th>
+                        <td>볼트</td>
+                        <td>100개</td>
+                    </tr>
+                    <tr>
+                        <th>D300-98765</th>
+                        <td>너트</td>
+                        <td>200개</td>
+                    </tr>
+                    <!-- 재고 현황을 추가할 수 있습니다.-->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+  
