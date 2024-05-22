@@ -1,8 +1,6 @@
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.118/build/three.module.js';
 import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.118/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.118/examples/jsm/controls/OrbitControls.js';
-
-// Import the position module
 import { getPosition } from './position.js';
 
 let camera, scene, renderer, clock;
@@ -95,6 +93,7 @@ function loadStaticModel() {
         staticModel = gltf.scene;
         staticModel.visible = true; // Start with the static model visible
         scene.add(staticModel);
+        console.log('Static model loaded');
     }, undefined, loadModelFailed);
 }
 
@@ -116,6 +115,7 @@ function loadAnimationModels() {
             animationMixers.push(animationMixer);
 
             scene.add(animationModel);
+            console.log(`Animation model ${index + 1} loaded`);
         }, undefined, loadModelFailed);
     });
 }
@@ -132,9 +132,9 @@ function updateModelsBasedOnPosition() {
     if (position !== lastPosition) {
         lastPosition = position;
         console.log("Current Position: ", position);
-        const positionDisplay = document.getElementById('positionDisplay');
+        const positionDisplay = document.getElementById('coordinates');
         
-        // Update the text content of the positionDisplay div in the desired format
+        // Update the text content of the coordinates span in the desired format
         positionDisplay.innerText = `현재 좌표: ${position}`;
         
         switch (position) {
